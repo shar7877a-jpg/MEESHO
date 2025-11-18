@@ -2,6 +2,47 @@
   "products": [
     {
       "id": 1,
+      "img1": "https://images.meesho.com/images/products/620623615/9aufw_512.avif",
+      "img2": "https://images.meesho.com/images/products/620623615/61ltg_512.avif",
+      "title": "Men Trendy Winter Hoodie",
+      "price": 199,
+      "oldPrice": 899,
+      "discount": 78,
+      "offerPrice": 349,
+      "offers": 2,
+      "rating": "4.3",
+      "reviews": "1,980"
+    },
+    {
+      "id": 2,
+      "img1": "https://images.meesho.com/images/products/45789212/l4f2s_512.webp",
+      "img2": "https://images.meesho.com/images/products/45789212/t2ff1_512.webp",
+      "title": "Women Woolen Long Coat",
+      "price": 349,
+      "oldPrice": 1499,
+      "discount": 77,
+      "offerPrice": 499,
+      "offers": 1,
+      "rating": "4.2",
+      "reviews": "3,221"
+    },
+    {
+      "id": 3,
+      "img1": "https://images.meesho.com/images/products/129345922/ab12d_512.webp",
+      "img2": "https://images.meesho.com/images/products/129345922/d7d9c_512.webp",
+      "title": "Men Thermal Upper & Lower Set",
+      "price": 259,
+      "oldPrice": 899,
+      "discount": 71,
+      "offerPrice": 329,
+      "offers": 3,
+      "rating": "4.4",
+      "reviews": "1,120"
+    },
+{
+  "products": [
+    {
+      "id": 1,
       "img1": "https://images.meesho.com/images/products/620623615/9aufw_512.avif?width=512",
       "img2": "https://images.meesho.com/images/products/620623615/61ltg_512.avif?width=512",
       "title": "NEW TRENDING AND COMFORTABLE MEN SWEATER AND HOODIES (PACK OF 1)",
