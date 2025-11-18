@@ -2,10 +2,10 @@
   "products": [
     {
       "id": 1,
-      "img1": "https://images.meesho.com/images/products/620623615/9aufw_512.avif",
-      "img2": "https://images.meesho.com/images/products/620623615/61ltg_512.avif",
-      "title": "Men Trendy Winter Hoodie",
-      "price": 199,
+      "img1": "https://images.meesho.com/images/products/455900642/c7yvw_512.avif?width=512",
+      "img2": "https://images.meesho.com/images/products/455900642/ofwmp_512.avif?width=512",
+      "title": "Stylish Sleeveless Jacket For Women",
+      "price": 109,
       "oldPrice": 899,
       "discount": 78,
       "offerPrice": 349,
