@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | Meesho Style</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #f7f7f7;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial;
+            max-width: 480px;
+            margin: auto;
+        }
+
+        .header {
+            background: #3d3d3d;
+            color: white;
+            padding: 14px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 14px;
+            top: 14px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .amount-box {
+            background: #4a4a4a;
+            padding: 25px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .amount-box h2 {
+            margin: 0;
+            font-weight: 500;
+            font-size: 26px;
+        }
+
+        .section-title {
+            padding: 16px;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .offer-box {
+            background: white;
+            margin: 0 12px 10px;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+        }
+
+        .apply-btn {
+            float: right;
+            background: white;
+            border: 1px solid #8a8a8a;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        .payment-box {
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            margin: 0 12px;
+        }
+
+        .payment-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .pay-item {
+            text-align: center;
+            width: 80px;
+            flex-shrink: 0;
+            cursor: pointer;
+            /* ADDED */
+            padding: 8px;
+            /* ADDED */
+            border-radius: 12px;
+            /* ADDED */
+        }
+
+        /* ADDED — highlight when selected */
+        .pay-item.selected {
+            border: 2px solid #b3006b;
+            background: #ffe6f3;
+        }
+
+        .pay-item img {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            background: #f2f2f2;
+            padding: 10px;
+        }
+
+        .pay-item p {
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .pay-list-box {
+            background: white;
+            margin: 10px 12px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .pay-row {
+            padding: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            font-size: 15px;
+        }
+
+        .proceed-btn {
+            background: #b3006b;
+            color: white;
+            width: 92%;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 17px;
+            border: none;
+            font-weight: 600;
+            position: fixed;
+            bottom: 15px;
+            left: 4%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <span class="back-btn" onclick="history.back()">&#8592;</span>
+        Payment
+    </div>
+
+    <div class="amount-box">
+        <h2>₹<span id="payAmount">0</span></h2>
+    </div>
+
+    <div class="section-title">Offers and Coupons</div>
+
+    <div class="offer-box">
+        <span>Save upto 1.5% on NeuCard</span>
+        <button class="apply-btn">APPLY</button>
+    </div>
+
+    <div class="section-title">Payment Options</div>
+
+    <div class="payment-box">
+        <div class="payment-options">
+            <div class="pay-item" onclick="selectUPIApp(this, 'upi')">
+                <img src="https://cdn.iconscout.com/icon/free/png-256/free-upi-logo-icon-svg-download-png-1747946.png">
+                <p>Pay by any UPI</p>
+            </div>
+
+            <div class="pay-item" onclick="selectUPIApp(this, 'gpay')">
+                <img src="https://cdn.iconscout.com/icon/free/png-256/free-google-pay-logo-icon-svg-download-png-1721670.png">
+                <p>Google Pay</p>
+            </div>
+
+            <div class="pay-item" onclick="selectUPIApp(this, 'phonepe')">
+                <img src="https://img.icons8.com/color/1200/phone-pe.jpg">
+                <p>PhonePe</p>
+            </div>
+
+            <div class="pay-item" onclick="selectUPIApp(this, 'paytm')">
+                <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png">
+                <p>Paytm</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="pay-list-box">
+        <div class="pay-row" onclick="selectUPIApp(this, 'upi')">Pay by UPI ID / QR <span>&#8250;</span></div>
+        <div class="pay-row">Card</div>
+        <div class="pay-row">Net Banking</div>
+    </div>
+
+    <button class="proceed-btn" onclick="proceedToUPI()">Proceed to Pay</button>
+
+
+    <script>
+        const CART_KEY = 'wd_cart_v1';
+
+        let selectedUPIMethod = "upi";
+        let amount = 0;
+
+        function calculateAmount() {
+            try {
+                let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+                amount = 0;
+
+                cart.forEach(item => {
+                    amount += item.price * item.qty;
+                });
+
+                document.getElementById("payAmount").textContent = amount;
+            } catch (err) {
+                amount = 0;
+            }
+        }
+
+        calculateAmount();
+
+        function selectUPIApp(el, method) {
+            selectedUPIMethod = method;
+
+            document.querySelectorAll(".pay-item").forEach(item =>
+                item.classList.remove("selected")
+            );
+
+            if (el.classList.contains("pay-item")) {
+                el.classList.add("selected");
+            }
+        }
+
+
+        function proceedToUPI() {
+            let upiId = "7992479332@ybl";
+            let name = "Priyanshu Raj";
+
+            let url = "";
+
+            if (selectedUPIMethod === "gpay") {
+                url = `tez://upi/pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR&tn=Order%20Payment`;
+            }
+            else if (selectedUPIMethod === "phonepe") {
+                url = `phonepe://upi/pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR&tn=Order%20Payment`;
+            }
+            else if (selectedUPIMethod === "paytm") {
+                url = `paytm://upi/pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR&tn=Order%20Payment`;
+            }
+            else {
+                url = `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR&tn=Order%20Payment`;
+            }
+
+            window.location.href = url;
+
+            setTimeout(() => {
+                window.location.href = "order-confirmed.html";
+            }, 3000);
+        }
+    </script>
+
+</body>
+
+</html>

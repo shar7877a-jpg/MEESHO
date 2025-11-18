@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Add Delivery Address</title>
+
+<style>
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        background: #fff;
+        max-width: 480px;
+        margin: auto;
+        color: #222;
+    }
+
+    /* HEADER */
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 16px;
+        font-size: 18px;
+        font-weight: 600;
+        border-bottom: 1px solid #eee;
+        background: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .back {
+        font-size: 26px;
+        cursor: pointer;
+    }
+
+    /* PROGRESS BAR */
+    .progress {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 20px 10px;
+    }
+    .step {
+        text-align: center;
+        width: 25%;
+        font-size: 12px;
+        color: #949494;
+    }
+    .step-circle {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 2px solid #d4d4d4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        color: #bbb;
+        background: #fff;
+    }
+    .active .step-circle {
+        border-color: #4a7df7;
+        color: #4a7df7;
+        font-weight: 700;
+    }
+    .active.text {
+        color: #4a7df7;
+        font-weight: 600;
+    }
+
+    .done .step-circle {
+        background: #4a7df7;
+        color: #fff;
+        border-color: #4a7df7;
+    }
+    .done.text { color: #4a7df7; font-weight: 600; }
+
+    /* address icon + title */
+    .section-title {
+        margin: 14px 20px 6px;
+        font-size: 20px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .section-title svg {
+        width: 18px;
+        height: 18px;
+        fill: #4a7df7;
+    }
+
+    /* FORM */
+    .form {
+        padding: 0 20px;
+    }
+    .input-box {
+        width: 100%;
+        padding: 14px;
+        border: 1.5px solid #dcdcdc;
+        border-radius: 12px;
+        font-size: 15px;
+        margin-bottom: 12px;
+        outline: none;
+    }
+    .half-row {
+        display: flex;
+        gap: 12px;
+    }
+
+    /* Save button */
+    .bottom-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        max-width: 480px;
+        margin: auto;
+        padding: 14px 18px;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+    .btn-save {
+        width: 100%;
+        padding: 14px;
+        background: #b3006b;
+        color: #fff;
+        font-size: 17px;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+    }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="back" onclick="history.back()">&#8249;</div>
+    ADD DELIVERY ADDRESS
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress">
+
+    <div class="step done">
+        <div class="step-circle">1</div>
+        <div class="text">Cart</div>
+    </div>
+
+    <div class="step active">
+        <div class="step-circle">2</div>
+        <div class="text">Address</div>
+    </div>
+
+    <div class="step">
+        <div class="step-circle">3</div>
+        <div class="text">Payment</div>
+    </div>
+
+    <div class="step">
+        <div class="step-circle">4</div>
+        <div class="text">Summary</div>
+    </div>
+
+</div>
+
+<!-- Title -->
+<div class="section-title">
+    <svg viewBox="0 0 24 24"><path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 
+    9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"></path></svg>
+    Address
+</div>
+
+<!-- FORM -->
+<div class="form">
+
+    <input type="text" class="input-box" placeholder="Full Name">
+
+    <input type="text" class="input-box" placeholder="Mobile number">
+
+    <input type="text" class="input-box" placeholder="Pincode">
+
+    <div class="half-row">
+        <input type="text" class="input-box" placeholder="City">
+        <select class="input-box">
+            <option>Andhra Pradesh</option>
+            <option>Bihar</option>
+            <option>Delhi</option>
+            <option>Karnataka</option>
+            <option>Maharashtra</option>
+            <option>Tamil Nadu</option>
+            <option>Uttar Pradesh</option>
+        </select>
+    </div>
+
+    <input type="text" class="input-box" placeholder="House No., Building Name">
+
+    <input type="text" class="input-box" placeholder="Road name, Area, Colony">
+
+</div>
+
+<!-- SAVE -->
+<div class="bottom-bar">
+    <button class="btn-save" onclick="goToPayment()">
+        Save Address and Continue
+    </button>
+</div>
+
+<script>
+function goToPayment() {
+    window.location.href = "payment.html";
+}
+</script>
+
+</body>
+</html>
