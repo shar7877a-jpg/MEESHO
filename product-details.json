@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "img1": "./img/model.jpg",
+      "img1": "https://images.meesho.com/images/products/620623615/9aufw_512.avif?width=512",
       "img2": "./img/model.jpg",
       "title": "Traditional Kurti Set",
       "price": 199,
