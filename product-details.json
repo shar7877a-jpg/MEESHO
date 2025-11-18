@@ -130,9 +130,6 @@
       "rating": "4.4",
       "reviews": "2451"
     },
-
-    /* ----------- ITEMS 11–35 continue below ---------- */
-
     {
       "id": 11,
       "img1": "https://images.meesho.com/images/products/45789212/l4f2s_512.webp",
@@ -263,9 +260,6 @@
       "rating": "4.5",
       "reviews": "1988"
     },
-
-    /* ------- ITEMS 21 to 35 ------- */
-
     {
       "id": 21,
       "img1": "https://images.meesho.com/images/products/129345922/ab12d_512.webp",
@@ -460,12 +454,7 @@
       "offers": 2,
       "rating": "4.3",
       "reviews": "1899"
-    }
-  ]
-}
-
-{
-  "products": [
+    },
     {
       "id": 1,
       "img1": "https://images.meesho.com/images/products/620623615/9aufw_512.avif",
