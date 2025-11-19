@@ -1,6 +1,19 @@
 {
   "products": [
+    },
     {
+    "id": 3,
+    "img1": "https://images.meesho.com/images/products/1003/a3_512.avif?width=512",
+    "img2": "https://images.meesho.com/images/products/1003/a3_512.avif?width=512",
+    "title": "Trendy Bomber Jacket",
+    "price": 399,
+    "oldPrice": 1999,
+    "discount": 78,
+    "offerPrice": 899,
+    "offers": 2,
+    "rating": "4.5",
+    "reviews": "3211"
+  },
       "id": 1,
       "img1": "https://images.meesho.com/images/products/455900642/c7yvw_512.avif?width=512",
       "img2": "https://images.meesho.com/images/products/455900642/ofwmp_512.avif?width=512",
